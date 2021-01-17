@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+  </head>
+  <body>
+    <h1>SIGN IN</h1>
+    <form>
+      <label>
+        Username:
+        <input id="email" type="text" placeholder="email" />
+      </label>
+      <label>
+        Password:
+        <input id="password" type="text" placeholder="password" />
+      </label>
+      <button id="btn-login" type="button">Login</button>
+    </form>
+    <h2>Don't have an account?</h2>
+    <button id="btn-to-signup" type="button">Sign up</button>
+
+
+    <script src="index.js"></script>
+    <script>
+      const signUpBtn = $('#btn-to-signup');
+      signUpBtn.on('click', () => {
+        window.location.href = "signup.html";
+      })
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          window.location.href = "home.html";
+        }
+      });
+    </script>
+  </body>
+</html>
